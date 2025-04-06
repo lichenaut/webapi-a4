@@ -217,6 +217,7 @@ router
   .post(authJwtController.isAuthenticated, async (req, res) => {
     try {
       const movieId = req.params.movieId;
+      movieId = Number(movieId);
       if (!isValidObjectId(movieId)) {
         return res.status(400).json({ message: "Invalid movieId" });
       }
