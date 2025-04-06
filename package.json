@@ -1,0 +1,44 @@
+{
+  "name": "csc3916_hw3",
+  "version": "1.0.0",
+  "description": "Web API 3916 Homework 3",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --timeout 10000 --exit",
+    "start": "MONGOMS_DOWNLOAD_URL=https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian12-8.0.4.tgz node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawnmccarthy/CSC3916_HW3.git"
+  },
+  "keywords": [
+    "Movie"
+  ],
+  "author": "Shawn McCarthy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shawnmccarthy/CSC3916_HW3/issues"
+  },
+  "homepage": "https://github.com/shawnmccarthy/CSC3916_HW3#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "http": "0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.14.2",
+    "mongodb-memory-server": "^10.1.4",
+    "mongoose": "^8.10.1",
+    "passport": "^0.7.0",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.5.0",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.8.2"
+  }
+}
