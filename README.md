@@ -2,6 +2,11 @@ Note: Render's rate limiting and available memory on the free plan will make vis
 
 https://webapi-class.postman.co/workspace/My-Workspace~edc9a8ac-3fb0-4264-8986-1549a3452f8a/collection/34573647-f85c3a6e-6c75-481e-8c22-71b9fb81dafe?action=share&creator=34573647&active-environment=34573647-a7e7e217-fe6c-4902-ae68-37a737b2f31d
 
+Explanation: this completes the assignment without extra credit.
+Installation: usual npm installation, built-in MongoDB.
+Link to Postman: above.
+Env var: SECRET_KEY
+
 # Assignment Three
 
 ## Purpose
