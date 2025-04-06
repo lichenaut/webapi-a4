@@ -261,8 +261,7 @@ router
 
   // POST create new review (JWT protected)
   .post(authJwtController.isAuthenticated, async (req, res) => {
-    let { movieId, username, review, rating } = req.body;
-    movieId = Number(movieId);
+    const { movieId, username, review, rating } = req.body;
 
     if (!movieId || !review || rating === undefined) {
       return res.status(400).json({
@@ -271,7 +270,12 @@ router
     }
 
     try {
-      const newReview = new Review({ movieId, username, review, rating });
+      const newReview = new Review({
+        movieId: mongoose.Types.ObjectId(movieId),
+        username,
+        review,
+        rating,
+      });
       await newReview.save();
       res.status(200).json({ message: "Review created!" });
     } catch (err) {
