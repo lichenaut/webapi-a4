@@ -8,6 +8,7 @@ const cors = require("cors");
 const User = require("./Users");
 const Movie = require("./Movies"); // You're not using Movie, consider removing it
 const { startMongo, connectDB } = require("./mongo");
+const mongoose = require("mongoose");
 
 const app = express();
 app.use(cors());
