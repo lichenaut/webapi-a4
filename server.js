@@ -270,12 +270,7 @@ router
     }
 
     try {
-      const newReview = new Review({
-        movieId: new mongoose.Types.ObjectId(movieId),
-        username,
-        review,
-        rating,
-      });
+      const newReview = new Review({ movieId, username, review, rating });
       await newReview.save();
       res.status(200).json({ message: "Review created!" });
     } catch (err) {

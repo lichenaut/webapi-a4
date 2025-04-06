@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 // Movie schema
 var ReviewSchema = new Schema({
-  movieId: { type: mongoose.Schema.Types.ObjectId, ref: "Movie" },
+  movieId: { type: Number, ref: "Movie" },
   username: String,
   review: String,
   rating: { type: Number, min: 0, max: 5 },
