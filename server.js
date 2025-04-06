@@ -197,9 +197,13 @@ router
 router
   .route("/movies/:movieId")
   .get(authJwtController.isAuthenticated, async (req, res) => {
-    const id = req.params.movieId;
     try {
-      const movie = await Movie.findById(req.params.movieId);
+      const movieId = mongoose.Types.ObjectId(req.params.movieId);
+      const query = Movie.findById(movieId);
+      if (req.query.reviews) {
+        query.populate("reviews");
+      }
+      const movie = await query.exec();
       if (!movie) return res.status(404).json({ message: "Movie not found." });
       res.json(movie);
     } catch (err) {
