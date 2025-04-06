@@ -100,7 +100,7 @@ router.post("/signin", async (req, res) => {
 router
   .route("/movies/:movieId")
   .get(authJwtController.isAuthenticated, async (req, res) => {
-    const id = req.params.movieId;
+    let id = req.params.movieId;
     id = Number(id);
     try {
       let movie;
