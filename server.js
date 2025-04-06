@@ -101,6 +101,7 @@ router
   .route("/movies/:movieId")
   .get(authJwtController.isAuthenticated, async (req, res) => {
     const id = req.params.movieId;
+    id = Number(id);
     try {
       let movie;
       if (req.query.reviews === "true") {
@@ -217,7 +218,6 @@ router
   .post(authJwtController.isAuthenticated, async (req, res) => {
     try {
       const movieId = req.params.movieId;
-      movieId = Number(movieId);
       if (!isValidObjectId(movieId)) {
         return res.status(400).json({ message: "Invalid movieId" });
       }
