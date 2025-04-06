@@ -194,16 +194,20 @@ router
     }
   });
 
+const isValidObjectId = (id) => {
+  const ObjectId = mongoose.Types.ObjectId;
+  return ObjectId.isValid(id);
+};
+
 router
   .route("/movies/:movieId")
   .get(authJwtController.isAuthenticated, async (req, res) => {
     try {
-      const movieId = mongoose.Types.ObjectId(req.params.movieId);
-      const query = Movie.findById(movieId);
-      if (req.query.reviews) {
-        query.populate("reviews");
+      const movieId = req.params.movieId;
+      if (!isValidObjectId(movieId)) {
+        return res.status(400).json({ message: "Invalid movieId" });
       }
-      const movie = await query.exec();
+      const movie = await Movie.findById(movieId);
       if (!movie) return res.status(404).json({ message: "Movie not found." });
       res.json(movie);
     } catch (err) {
@@ -212,11 +216,13 @@ router
   })
   .post(authJwtController.isAuthenticated, async (req, res) => {
     try {
-      const movie = await Movie.findByIdAndUpdate(
-        req.params.movieId,
-        req.body,
-        { new: true }
-      );
+      const movieId = req.params.movieId;
+      if (!isValidObjectId(movieId)) {
+        return res.status(400).json({ message: "Invalid movieId" });
+      }
+      const movie = await Movie.findByIdAndUpdate(movieId, req.body, {
+        new: true,
+      });
       if (!movie) return res.status(404).json({ message: "Movie not found." });
       res.json(movie);
     } catch (err) {
@@ -225,7 +231,11 @@ router
   })
   .delete(authJwtController.isAuthenticated, async (req, res) => {
     try {
-      const movie = await Movie.findByIdAndDelete(req.params.movieId);
+      const movieId = req.params.movieId;
+      if (!isValidObjectId(movieId)) {
+        return res.status(400).json({ message: "Invalid movieId" });
+      }
+      const movie = await Movie.findByIdAndDelete(movieId);
       if (!movie) return res.status(404).json({ message: "Movie not found." });
       res.json({ message: "Movie deleted successfully." });
     } catch (err) {
