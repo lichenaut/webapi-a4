@@ -271,7 +271,7 @@ router
 
     try {
       const newReview = new Review({
-        movieId: mongoose.Types.ObjectId(movieId),
+        movieId: new mongoose.Types.ObjectId(movieId),
         username,
         review,
         rating,
