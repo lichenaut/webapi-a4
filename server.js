@@ -261,7 +261,7 @@ router
 
   // POST create new review (JWT protected)
   .post(authJwtController.isAuthenticated, async (req, res) => {
-    const { movieId, username, review, rating } = req.body;
+    let { movieId, username, review, rating } = req.body;
     movieId = Number(movieId);
 
     if (!movieId || !review || rating === undefined) {
