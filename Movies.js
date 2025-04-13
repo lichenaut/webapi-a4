@@ -40,6 +40,7 @@ const MovieSchema = new mongoose.Schema({
       characterName: String,
     },
   ],
+  imageUrl: String,
 });
 
 module.exports = mongoose.model("Movie", MovieSchema);
